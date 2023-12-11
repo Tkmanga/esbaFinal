@@ -1,18 +1,17 @@
-const mongoose = require('mongoose');
-require('dotenv').config();
+const mongoose = require("mongoose");
 
-var mongoURL = `mongodb+srv://${process.env.USER_MONGODB}:${process.env.USER_MONGODB_KEY}@cluster10.2yqt65k.mongodb.net/mern-rooms`
+var mongoDBURL = 'mongodb+srv://tacachojose:Boldt1234@cluster10.2yqt65k.mongodb.net/mern-rooms'
 
-mongoose.connect(mongoURL, {useUnifiedTopology: true, useNewUrlParser: true})
+mongoose.connect(mongoDBURL , {useUnifiedTopology:true , useNewUrlParser:true})
 
-var conection = mongoose.connection
+var dbconnect = mongoose.connection
 
-conection.on(`error`, () => {
-    console.error(`Mongo db connection error`)
+dbconnect.on('error' , ()=>{
+    console.log(`Mongo DB Connection Failed`);
 })
 
-conection.on(`connected`, () => {
-    console.log(`Connected to Mongo`)
+dbconnect.on('connected' , ()=>{
+    console.log(`Mongo DB Connection Successfull`);
 })
 
 module.exports = mongoose
